@@ -1,0 +1,10 @@
+\section{Goals}
+\subsection{Super Resolution}
+To address these challenges, we propose WaveMix, a novel neural architecture that replaces self-attention with an efficient frequency-domain alternative for spatial token mixing. At the core of WaveMix is the multi-level 2D Discrete Wavelet Transform (DWT), which enables hierarchical decomposition of input images without the need for unrolling. Unlike attention-based methods, DWT preserves the spatial resolution while reorganizing image information in a way that naturally encodes several powerful inductive priors: scale-invariance, shift-invariance, and sparsity of edges.
+
+The DWT is a lossless transformation that maintains the overall information content (i.e., the total number of spatial tokens remains unchanged), while emphasizing high-frequency details that are crucial for image super-resolution. Importantly, it introduces no additional parameters and expands the receptive field more efficiently than stacked convolutional layers, allowing the model to capture both global context and fine-grained details with minimal overhead.
+
+WaveMix thus provides an effective and lightweight alternative to traditional vision architectures, particularly in resource-constrained environments. By leveraging frequency-domain insights, it opens up new directions for designing scalable and interpretable models for high-resolution image reconstruction and other dense prediction tasks.
+
+\subsection{Crowd Counting}
+\subsection{Deep Stream System}

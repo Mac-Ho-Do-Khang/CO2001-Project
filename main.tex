@@ -1,0 +1,211 @@
+\documentclass[a4paper]{report}
+
+\usepackage[fontsize=13pt]{scrextend}
+\usepackage[style=ieee,sorting=none]{biblatex}
+\AtEveryBibitem{%
+  \clearfield{issn}
+  \clearfield{doi}
+  \ifentrytype{online}{}{%
+    \clearfield{url}
+  }
+}
+\addbibresource{refs.bib}
+
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{indentfirst}
+\usepackage{ragged2e}
+\usepackage{blindtext}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{indentfirst}
+\usepackage{amssymb,latexsym,multicol,array,hhline,fancyhdr}
+\usepackage[english]{babel}
+\usepackage{mathptmx}
+\usepackage[normalem]{ulem}
+\usepackage{lastpage}
+\usepackage[lined,boxed,commentsnumbered]{algorithm2e}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{caption}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{tikz}
+\usetikzlibrary{arrows,snakes,backgrounds,calc}
+\usepackage{subcaption}
+\usepackage{longfbox}
+\usepackage{float}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
+\usepackage{comment}
+\usepackage{tocloft}
+\usepackage{appendix}
+
+% \renewcommand{\algorithmicrequire}{\textbf{Input:}}
+% \renewcommand{\algorithmicensure}{\textbf{Output:}}
+\RestyleAlgo{ruled}
+\SetKwComment{Comment}{/* }{ */}
+
+\renewcommand{\baselinestretch}{1.5}
+
+\newtheorem{theorem}{{\bf Theorem}}
+\newtheorem{property}{{\bf Property}}
+\newtheorem{proposition}{{\bf Proposition}}
+\newtheorem{corollary}[proposition]{{\bf Corollary}}
+\newtheorem{lemma}[proposition]{{\bf Lemma}}
+
+\def\thesisheadlayout{
+	\geometry{
+		a4paper,
+		left=40mm,
+		top=30mm,
+        bottom=30mm,
+        right=30mm
+	}
+}
+\AtBeginDocument{\renewcommand*\contentsname{Contents}}
+\AtBeginDocument{\renewcommand*\refname{References}}
+
+\thesisheadlayout
+\setlength{\headheight}{40pt}
+\fancyfoot{}
+\fancyfoot[R]{\scriptsize Page {\thepage}/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0.3pt}
+\setlength\parindent{0pt}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{3}
+\makeatletter
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\@alph\c@subsubsubsection}
+\newcommand\subsubsubsection{\@startsection{subsubsubsection}{4}{\z@}%
+  {-3.25ex\@plus -1ex \@minus -.2ex}%
+  {1.5ex \@plus .2ex}%
+  {\normalfont\normalsize\bfseries}}
+\newcommand*\l@subsubsubsection{\@dottedtocline{3}{10.0em}{4.1em}}
+\makeatother
+
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename{} \thechapter}{15pt}{\Huge}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{tikzpicture}[remember picture, overlay]
+  \draw[line width = 4pt] ($(current page.north west) + (30mm,-0.5in)$) rectangle ($(current page.south east) + (-20mm,0.5in)$);
+  \draw[line width=1.5pt]
+    ($ (current page.north west) + (30mm+0.05in,-0.55in) $)
+    rectangle
+    ($ (current page.south east) + (-20mm-0.05in,0.55in) $);
+\end{tikzpicture}
+\vspace{-3.cm}
+\begin{center}
+\large \textbf{\fontsize{14pt}{0pt}\selectfont VIETNAM NATIONAL UNIVERSITY, HO CHI MINH CITY} \\
+\vspace{-0.3cm}
+\Large \textbf{\fontsize{14pt}{0pt}\selectfont HO CHI MINH CITY UNIVERSITY OF TECHNOLOGY} \\
+\vspace{-0.3cm}
+\Large \textbf{\fontsize{14pt}{0pt}\selectfont FACULTY OF COMPUTER SCIENCE AND ENGINEERING}
+\vspace{-0.3cm}
+\end{center}
+
+% \vspace{0.3cm}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=8cm]{image/hcmut.png}
+\end{center}
+\end{figure}
+\vspace{-1.3cm}
+\begin{center}
+\begin{tabular}{c}
+\multicolumn{1}{c}{\textbf{{REPORT}}}
+\\{\textbf{{\Large \MakeUppercase{MULTIDISCIPLINARY PROJECT}}}}
+\\
+
+\end{tabular}
+\end{center}
+% Title
+\rule[0.4cm]{\linewidth}{0.3mm} 
+\centering
+{\Large \bfseries \MakeUppercase{Frequency Exploitation Super Resolution \& Crowd Counting on Deep Stream System}}    
+
+\rule{\linewidth}{0.2mm} \\[0.1cm]
+\begin{center}
+    \MakeUppercase{\textbf{\Large Major: \Large Computer Science}}
+\end{center}
+
+\vspace{0.01cm}
+
+\begin{center}
+\begin{tabular}[H]{r l l}
+     \textbf{THESIS COMMITTEE}   & : COMPUTER SCIENCE - CLC\\
+     \textbf{SUPERVISOR(s)}      & : THOAI NAM, Assoc Prof.\\
+                                        & : DIEP THANH DANG, Ph.D.\\
+     \multicolumn{2}{c}{\textbf{\large ————o0o———–}}\\
+     \large \textbf{STUDENT}& : MAC HO DO KHANG - 2252297\\
+                            & : VO NGUYEN PHAT - 2252607\\
+                            & : BUI THAI AN - 2252001\\
+                            & : LY TUAN LOC - 2252456\\
+                            & : NGUYEN THANH MINH - 2252481\\
+                            & : NGUYEN THIEN LOC - 2252460
+   
+\end{tabular}    
+\end{center}
+\vspace{1.cm}
+\begin{center}
+{\fontsize{12pt}{0pt} HO CHI MINH CITY, May 2025}
+\end{center}
+\end{titlepage}
+
+% \thesislayout
+
+%\thispagestyle{empty}
+\renewcommand{\figurename}{\textbf{Figure}}
+\renewcommand{\tablename}{\textbf{Table}}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{roman}
+
+% \include{instructor-signature/main}
+% \includepdf[pages=-]{instructor-signature/task.pdf}
+% \includepdf[pages=-]{instructor-signature/Dong.pdf}
+\setcounter{page}{1}
+% \include{authenticity-declaration/main.tex}
+
+\include{acknowledgement/main.tex}
+
+\include{abstraction/main.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+\listoftables
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{arabic}
+\setcounter{page}{1}
+% \thesislayout
+\input{introduction/main}
+\input{theoretical-background/main}
+\input{related-work/main}
+\input{experiment/main}
+\input{future-plan/main}
+
+% \nocite{*}
+\addcontentsline{toc}{chapter}{References}
+\printbibliography[title=References]
+
+% \include{appendix/main}
+\end{document}
