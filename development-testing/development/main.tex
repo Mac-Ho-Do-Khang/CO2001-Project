@@ -1,0 +1,71 @@
+\section{Development Pipeline}
+
+This section outlines the overall design pipeline adopted for developing the integrated ESP32 TTGO T-Display device with a custom 3D-printed housing. The pipeline consists of four sequential phases: system analysis, mechanical design, electrical integration, and programming. Each phase builds directly on the outputs of the preceding one, ensuring coherent integration across hardware, mechanical, and software domains. The complete pipeline is summarised in Figure~\ref{fig:development_pipeline}.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+    [
+        node distance=0.6cm,
+        box/.style={
+            draw, rectangle, rounded corners=4pt,
+            minimum width=5.5cm, minimum height=1.0cm,
+            text centered, font=\small\bfseries,
+            fill=gray!15, line width=0.8pt
+        },
+        subbox/.style={
+            draw, rectangle, rounded corners=3pt,
+            minimum width=4.8cm, minimum height=0.75cm,
+            text centered, font=\small,
+            fill=white, line width=0.5pt
+        },
+        arrow/.style={->, >=stealth, line width=1pt},
+        phase/.style={font=\footnotesize\itshape, text=gray}
+    ]
+
+    % Phase 1 – System Analysis
+    \node[box] (sa) {Phase 1: System Analysis};
+    \node[subbox, below=of sa] (sa1) {Board dimension inspection};
+    \node[subbox, below=0.2cm of sa1] (sa2) {Architectural specification review};
+
+    % Phase 2 – Mechanical Design
+    \node[box, below=0.6cm of sa2] (md) {Phase 2: Mechanical Design};
+    \node[subbox, below=of md] (md1) {CAD modelling in Fusion 360};
+    \node[subbox, below=0.2cm of md1] (md2) {DFA optimisation};
+    \node[subbox, below=0.2cm of md2] (md3) {Slicing and print-parameter setup (Cura)};
+    \node[subbox, below=0.2cm of md3] (md4) {FDM printing (Ender 3 V2 / PLA)};
+
+    % Phase 3 – Electrical Integration
+    \node[box, below=0.6cm of md4] (ei) {Phase 3: Electrical Integration};
+    \node[subbox, below=of ei] (ei1) {I/O interface and power analysis};
+    \node[subbox, below=0.2cm of ei1] (ei2) {Component wiring and connection design};
+
+    % Phase 4 – Programming
+    \node[box, below=0.6cm of ei2] (pg) {Phase 4: Programming};
+    \node[subbox, below=of pg] (pg1) {Firmware development (Arduino / ESP32)};
+    \node[subbox, below=0.2cm of pg1] (pg2) {Display logic and device operations};
+
+    % Arrows between phases
+    \draw[arrow] (sa)  -- (sa1);
+    \draw[arrow] (sa1) -- (sa2);
+    \draw[arrow] (sa2) -- (md);
+    \draw[arrow] (md)  -- (md1);
+    \draw[arrow] (md1) -- (md2);
+    \draw[arrow] (md2) -- (md3);
+    \draw[arrow] (md3) -- (md4);
+    \draw[arrow] (md4) -- (ei);
+    \draw[arrow] (ei)  -- (ei1);
+    \draw[arrow] (ei1) -- (ei2);
+    \draw[arrow] (ei2) -- (pg);
+    \draw[arrow] (pg)  -- (pg1);
+    \draw[arrow] (pg1) -- (pg2);
+
+    \end{tikzpicture}
+    \caption{Development pipeline for the integrated ESP32 TTGO T-Display device.}
+    \label{fig:development_pipeline}
+\end{figure}
+
+\input{development-testing/development/analysis.tex}
+\input{development-testing/development/mechanical.tex}
+\input{development-testing/development/electrical.tex}
+\input{development-testing/development/programming.tex}

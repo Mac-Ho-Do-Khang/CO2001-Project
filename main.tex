@@ -6,10 +6,10 @@
 % -----------------------------------------------------------------------
 
 % --- Font & Encoding ---
-\usepackage[fontsize=12pt]{scrextend}        % Set base font size to 12pt
-\usepackage{mathptmx}                        % Use Times New Roman-style font for text and math
-\usepackage[english]{babel}                  % English hyphenation and language rules
-\usepackage{csquotes}                        % Context-sensitive quotes; required by biblatex when babel is loaded
+\usepackage[fontsize=12pt]{scrextend}  % Set base font size to 12pt
+\usepackage{mathptmx}                  % Use Times New Roman-style font for text and math
+\usepackage[english]{babel}            % English hyphenation and language rules
+\usepackage{csquotes}                  % Context-sensitive quotes; required by biblatex when babel is loaded
 
 % --- Bibliography ---
 \usepackage[style=ieee,sorting=none]{biblatex} % IEEE citation style, citations in order of appearance
@@ -20,67 +20,69 @@
     \clearfield{url}                           %     Remove URL field
   }
 }
-\addbibresource{refs.bib}                    % Load the bibliography file
+\addbibresource{refs.bib}          % Load the bibliography file
 
 % --- Tables ---
-\usepackage{longtable}                       % Tables that span multiple pages
-\usepackage{booktabs}                        % Professional-quality horizontal rules in tables
-\usepackage{array}                           % Extended column definitions for tabular
-\usepackage{tabularx}                        % Tables with auto-width columns
-\usepackage{multirow}                        % Cells spanning multiple rows in tables
-\usepackage{hhline}                          % Double horizontal lines in tables
-\usepackage{rotating}                        % Rotate tables/figures (sidewaystable, etc.)
+\usepackage{longtable}             % Tables that span multiple pages
+\usepackage{booktabs}              % Professional-quality horizontal rules in tables
+\usepackage{array}                 % Extended column definitions for tabular
+\usepackage{tabularx}              % Tables with auto-width columns
+\usepackage{multirow}              % Cells spanning multiple rows in tables
+\usepackage{hhline}                % Double horizontal lines in tables
+\usepackage{rotating}              % Rotate tables/figures (sidewaystable, etc.)
 
 % --- Math ---
-\usepackage{amsmath}                         % AMS math environments and commands
-\usepackage{amssymb,latexsym}                % Additional math symbols
+\usepackage{amsmath}               % AMS math environments and commands
+\usepackage{amssymb,latexsym}      % Additional math symbols
 
 % --- Colors ---
-\usepackage[table,xcdraw]{xcolor}            % Color support, including table row coloring
+\usepackage[table,xcdraw]{xcolor}  % Color support, including table row coloring
 
 % --- Layout & Formatting ---
-\usepackage{indentfirst}                     % Indent the first paragraph of each section
-\usepackage{ragged2e}                        % Improved text alignment commands
-\usepackage{blindtext}                       % Generate placeholder/dummy text
-\usepackage{titlesec}                        % Customize chapter/section title formatting
-\usepackage{geometry}                        % Page margin and size control
-\usepackage{setspace}                        % Line spacing control
-\usepackage{multicol}                        % Multi-column layout
+\usepackage{ragged2e}        % Improved text alignment commands
+\usepackage{blindtext}       % Generate placeholder/dummy text
+\usepackage{titlesec}        % Customize chapter/section title formatting
+\usepackage{geometry}        % Page margin and size control
+\usepackage{setspace}        % Line spacing control
+\usepackage{multicol}        % Multi-column layout
 
 % --- Headers & Footers ---
-\usepackage{fancyhdr}                        % Custom headers and footers
-\usepackage{lastpage}                        % Reference the last page number
+\usepackage{fancyhdr}        % Custom headers and footers
+\usepackage{lastpage}        % Reference the last page number
 
 % --- Algorithms ---
 \usepackage[lined,boxed,commentsnumbered]{algorithm2e} % Algorithm pseudocode blocks
 
 % --- Lists ---
-\usepackage{enumerate}                       % Customizable enumerate list labels
+\usepackage{enumerate}       % Customizable enumerate list labels
 
 % --- Graphics & Figures ---
-\usepackage{color}                           % Basic color support (legacy)
-\usepackage{graphicx}                        % Include images (\includegraphics)
-\usepackage{caption}                         % Customize figure/table captions
-\usepackage{subcaption}                      % Sub-figures and sub-captions
-\usepackage{tikz}                            % Vector graphics and diagrams
-\usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,calc} % TikZ libraries for arrows, path decorations, coordinates
-\usepackage{float}                           % Improved float placement ([H] option)
-\usepackage{longfbox}                        % Long framed boxes across pages
+\usepackage{color}           % Basic color support (legacy)
+\usepackage{graphicx}        % Include images (\includegraphics)
+\usepackage{caption}         % Customize figure/table captions
+\usepackage{subcaption}      % Sub-figures and sub-captions
+\usepackage{tikz}            % Vector graphics and diagrams
+\usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,calc,positioning} % TikZ libraries for arrows, path decorations, coordinates
+\usepackage{float}           % Improved float placement ([H] option)
+\usepackage{longfbox}        % Long framed boxes across pages
 
 % --- Miscellaneous ---
-\usepackage[normalem]{ulem}                  % Underline and strikethrough (normalem keeps \emph intact)
-\usepackage{pdfpages}                        % Include external PDF pages
-\usepackage{hyperref}                        % Clickable links and PDF metadata
+\usepackage[normalem]{ulem}  % Underline and strikethrough (normalem keeps \emph intact)
+\usepackage{pdfpages}        % Include external PDF pages
+\usepackage{hyperref}        % Clickable links and PDF metadata
 \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true} % Link color settings
-\usepackage{comment}                         % Block comment environment (\begin{comment}...\end{comment})
-\usepackage{tocloft}                         % Customize Table of Contents, List of Figures, etc.
-\usepackage{appendix}                        % Appendix formatting support
+\usepackage{xurl}            % Allow URLs to break at more characters (must be after hyperref)
+\usepackage{comment}         % Block comment environment (\begin{comment}...\end{comment})
+\usepackage{tocloft}         % Customize Table of Contents, List of Figures, etc.
+\usepackage{appendix}        % Appendix formatting support
 
 % -----------------------------------------------------------------------
-% LINE SPACING
+% LINE SPACING & INDENTATION
 % -----------------------------------------------------------------------
 
-\renewcommand{\baselinestretch}{1.5}         % Set 1.5x line spacing throughout the document
+\renewcommand{\baselinestretch}{1.4}  % Set 1.4x line spacing throughout the document
+\setlength\parindent{0pt}             % Remove paragraph indentation globally
+\setlength\parskip{1.5ex}             % Add vertical space between paragraphs
 
 % -----------------------------------------------------------------------
 % PAGE GEOMETRY
@@ -95,27 +97,19 @@
 % TABLE OF CONTENTS & REFERENCES LABELS
 % -----------------------------------------------------------------------
 
-\AtBeginDocument{\renewcommand*\contentsname{Contents}}   % Rename TOC heading to "Contents"
-\AtBeginDocument{\renewcommand*\refname{References}}      % Rename references heading to "References"
+\AtBeginDocument{\renewcommand*\contentsname{Contents}}  % Rename TOC heading to "Contents"
+\AtBeginDocument{\renewcommand*\refname{References}}     % Rename references heading to "References"
 
 % -----------------------------------------------------------------------
-% HEADER & FOOTER SETUP
-% -----------------------------------------------------------------------
 
-\reportlayout                                 % Apply the page geometry defined above
-% \setlength{\headheight}{40pt}               % Set header height to accommodate content
-% \fancyfoot{}                                % Clear all footer fields
-% \fancyfoot[R]{\scriptsize Page {\thepage}/\pageref{LastPage}} % Right footer: "Page X/Y"
-% \renewcommand{\headrulewidth}{0.3pt}        % Thickness of the header rule line
-% \renewcommand{\footrulewidth}{0.3pt}        % Thickness of the footer rule line
-\setlength\parindent{0pt}                     % Remove paragraph indentation globally
+\reportlayout                % Apply the page geometry defined above
 
 % -----------------------------------------------------------------------
 % SECTION NUMBERING DEPTH
 % -----------------------------------------------------------------------
 
-\setcounter{secnumdepth}{4}                 % Number sections down to level 4 (subsubsubsection)
-\setcounter{tocdepth}{3}                    % Show sections up to level 3 in the TOC
+\setcounter{secnumdepth}{4}  % Number sections down to level 4 (subsubsubsection)
+\setcounter{tocdepth}{3}     % Show sections up to level 3 in the TOC
 
 % -----------------------------------------------------------------------
 % CHAPTER TITLE FORMAT
@@ -198,10 +192,10 @@
     \begin{tabular}[H]{r l l}
       \textbf{INSTRUCTOR} & : KIEU LE THUY CHUNG, Ph.D.\\
       \textbf{STUDENTS}   & : DO VIET DUY TUONG - 2353302\\
-      & : MAC HO DO KHANG - 2252297\\
-      & : NGUYEN LE HAI QUAN - 2353002\\
-      & : NINH VU THAI BAO - 2252073\\
-      & : TRAN NGUYEN MINH KHOI - 2352625\\
+                          & : MAC HO DO KHANG - 2252297\\
+                          & : NGUYEN LE HAI QUAN - 2353002\\
+                          & : NINH VU THAI BAO - 2252073\\
+                          & : TRAN NGUYEN MINH KHOI - 2352625\\
     \end{tabular}
   \end{center}
   
@@ -254,7 +248,8 @@
 \input{introduction/main}
 \input{theoretical-background/main}
 \input{related-work/main}
-\input{development/main}
+\input{components/main}
+\input{development-testing/main}
 \input{conclusion/main}
 
 % -----------------------------------------------------------------------

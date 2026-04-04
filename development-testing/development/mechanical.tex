@@ -1,0 +1,24 @@
+\subsection{Mechanical Design}
+
+With the board's geometry fully characterised, the mechanical design phase produces the custom 3D-printed housing. The workflow within this phase proceeds through four successive steps.
+
+\subsubsection{CAD Modelling}
+
+The enclosure is modelled in Autodesk Fusion 360. The internal cavity is dimensioned to match the board footprint with controlled tolerances, while external features, including 
+
+\begin{itemize}
+    \item Side-wall apertures for the USB-C port and buttons
+    \item Front-face opening for the display
+\end{itemize}
+
+are positioned to align with the results of the system analysis phase. Structural features such as snap-fit clips or interlocking tabs are added at this stage to facilitate tool-free assembly.
+
+Throughout the CAD modelling process, DFA principles are applied to minimise part count and simplify the assembly procedure. The housing is consequently designed as a two-part clamshell (a front cover and a back shell) that snaps together without fasteners, eliminating screws and reducing the total component count.
+
+\subsubsection{Slicing and Print-Parameter Configuration}
+
+The finalised CAD model is exported and imported into Ultimaker Cura for slicing. Print parameters including layer height, infill density and pattern, wall line count, support structures, and print speed are configured to balance structural integrity, dimensional accuracy, and print time. The orientation of each part on the build plate is chosen to minimise the need for support material and to ensure that critical surfaces are printed at optimal quality.
+
+\subsubsection{FDM Printing}
+
+The sliced G-code files are transferred to a Creality Ender 3 V2 printer. As mentioned above, PLA filament is selected for its ease of printing, good dimensional stability, and sufficient mechanical strength for a non-load-bearing enclosure application. After printing, the parts undergo basic post-processing, removal of support material and light surface finishing, before proceeding to the integration phases.
