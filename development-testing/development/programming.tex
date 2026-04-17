@@ -1,12 +1,19 @@
 \subsection{Programming}
 
-The project is built on the \textbf{Arduino framework} targeting the ESP32 microcontroller, compiled and flashed via the Arduino IDE 2.x with the official ESP32 board package. The primary display library is \textbf{TFT\_eSPI}, which provides hardware-accelerated, low-level access to the ST7789 controller of the built-in 1.14-inch TFT screen.
+The project is built on the Arduino framework targeting the ESP32 microcontroller, compiled and flashed via the Arduino IDE 2.x with the official ESP32 board package. The primary display library is TFT\_eSPI, which provides hardware-accelerated, low-level access to the ST7789 controller.
 
-The firmware follows a simple \textbf{mode-switching} architecture centred on a single main loop. The concept of an \textit{active mode} is the central organising principle: a global state variable tracks which application or screen is currently displayed. Each iteration of the main loop routes control to the rendering and input-handling routine of that mode.
+The firmware follows a simple mode-switching architecture centred on a single main loop. The concept of an active mode is the central organising principle: a global state variable tracks which application or screen is currently displayed. Each iteration of the main loop routes control to the rendering and input-handling routine of that mode.
 
-On startup, the device attempts to synchronise system time with an NTP server over Wi-Fi (allowing up to ten seconds). If synchronisation succeeds, the real-time clock is set accordingly; otherwise it falls back to the compile-time timestamp as a seed. After initialisation, the system enters its main loop, which continuously polls the two physical buttons (\texttt{GPIO0} and \texttt{GPIO35}), updates the active application, and redraws the display.
+On startup, the device attempts to synchronise system time with an NTP server over Wi-Fi. If synchronisation succeeds, the real-time clock is set accordingly; otherwise it falls back to the compile-time timestamp as a seed. After initialisation, the system enters its main loop, which continuously polls the two physical buttons (\texttt{GPIO0} and \texttt{GPIO35}), updates the active application, and redraws the display.
 
 The home screen is divided into two regions. The upper area displays a live digital clock, showing hours, minutes, seconds, and the current date. Below it, a fixed navigation bar presents six application icons arranged in two rows of three. A single press on either button moves the selection highlight one slot in the corresponding direction (with wrap-around); a double press on either button launches the currently highlighted application.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{development-testing/development/image/final_main_screen.png}
+    \caption{Home screen with digital clock and application navigation bar}
+    \label{fig:home_screen}
+\end{figure}
 
 The firmware ships with six self-contained applications accessible from the home screen:
 
@@ -19,44 +26,40 @@ The firmware ships with six self-contained applications accessible from the home
   \item \textbf{Demo Image Viewer}: a viewer that cycles through full-screen RGB565 images stored in flash.
 \end{itemize}
 
-% \begin{figure}[H]
-%     \centering
-%     \begin{subfigure}[b]{0.1\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{development-testing/development/image/program_stopwatch_icon.png}
-%         \caption{Stopwatch}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[b]{0.1\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{development-testing/development/image/program_calculator_icon.png}
-%         \caption{Calculator}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[b]{0.1\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{development-testing/development/image/program_animation_icon.png}
-%         \caption{Animation}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[b]{0.1\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{development-testing/development/image/program_alienattack_icon.png}
-%         \caption{Alien Attack}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[b]{0.1\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{development-testing/development/image/program_tetris_icon.png}
-%         \caption{Tetris}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[b]{0.1\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{development-testing/development/image/program_image_icon.png}
-%         \caption{Image Viewer}
-%     \end{subfigure}
-%     \label{fig:application_icons}
-% \end{figure}
+\begin{figure}[H]
+  \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{development-testing/development/image/final_screen_calculator.png}
+        \caption{Calculator application}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{development-testing/development/image/final_screen_alienattack.png}
+        \caption{Alien Attack game}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{development-testing/development/image/final_screen_tetris.png}
+        \caption{Tetris game}
+    \end{subfigure}
+    \label{fig:application_screens}
+\end{figure}
 
 Each application is implemented as a self-contained module under its own subdirectory, exposing a rendering function and an input-handler function that the main loop calls during the corresponding mode. This modular layout keeps concerns separated and makes it straightforward to add or remove applications without modifying the core dispatch logic.
+
+\begin{verbatim}
+Project Directory
+├── MainMenu.ino  # Main entry point
+├── MainScreen/   # Home screen content + Navigation bar
+├── Clock/        # Digital Clock (home screen content)
+├── Stopwatch/    # Stopwatch application
+├── Calculator/   # Calculator application
+├── Animation/    # Animation Display application
+├── AlienAttack/  # Alien Attack game application
+├── Tetris/       # Tetris game application
+├── DemoImage/    # Demo Image Viewer application
+└── ...
+\end{verbatim}

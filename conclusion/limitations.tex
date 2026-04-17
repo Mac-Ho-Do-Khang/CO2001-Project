@@ -1,0 +1,5 @@
+\section{Limitations}
+
+As the ESP32 TTGO T-Display board does not include a built-in component for timekeeping, the device relies on Wi-Fi to set the real-time clock. Moreover, the network configuration is hardcoded into the firmware as typing credentials using only two buttons is impractical. This means that upon reset, only when the only specified Wi-Fi network is available will the clock be set correctly.
+
+Currently, the device does not display any indication of battery level. This comes from the fact that the board does not have a built-in battery fuel gauge, and implementing one would require additional hardware components and software complexity. This results in the inconvenience of the user not knowing when the battery is low until the device shuts down.

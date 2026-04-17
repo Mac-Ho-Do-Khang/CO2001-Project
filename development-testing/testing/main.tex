@@ -1,23 +1,23 @@
 \section{Testing and Evaluation}
 
-Given the straightforward nature of this product, the testing strategy is kept deliberately minimal. Instead, five practical tests are conducted to verify that all core functions operate correctly and that the device meets basic reliability and requirements.
+Given the straightforward nature of this product, the testing strategy is kept minimal. Five practical tests are conducted to verify that all core functions operate correctly and that the device meets basic reliability and requirements.
 
-\subsection*{Button Functionality}
+\subsection{Button Functionality}
 
 The three physical buttons available on the TTGO T-Display board, the \texttt{RST} reset button, \texttt{GPIO0}, and \texttt{GPIO35}, are each pressed and held multiple times to confirm correct, repeatable behaviour. The \texttt{RST} button is verified to reboot the device cleanly without leaving it in an undefined state. The \texttt{GPIO0} and \texttt{GPIO35} buttons are confirmed to register input events reliably within the running firmware, triggering the expected in-application responses with no missed presses or spurious activations.
 
-\subsection*{Software Stability}
+\subsection{Software Stability}
 
 All programs loaded onto the device, including games and utility applications, are executed continuously for an extended period. The firmware is observed for crashes, freezes, or unexpected resets. Each application is confirmed to run from start to finish without errors and to return gracefully to the main menu where applicable. Nostack overflow events are recorded during this test.
 
-\subsection*{Battery and Charging}
+\subsection{Battery and Charging}
 
-The USB-C charging circuit is tested by connecting the device to a standard 5\,V USB power source from a fully discharged state and confirming that the battery charges to full capacity without interruption. Following a full charge, the device is powered on and operated under typical conditions, cycling through its available applications, to assess runtime. The device sustains continuous operation for a minimum of \textbf{7 hours} before the low-battery threshold is reached, satisfying the target endurance requirement.
+The USB-C charging circuit is tested by connecting the device to a standard 5\,V USB power source from a fully discharged state and confirming that the battery charges to full capacity without interruption. Following a full charge, the device is powered on and operated under typical conditions, cycling through its available applications, to assess runtime. The device sustains continuous operation for a minimum of 7 hours before the low-battery threshold is reached, satisfying the target endurance requirement.
 
-\subsection*{Firmware Update via USB-C}
+\subsection{Firmware Update via USB-C}
 
 A firmware binary is flashed to the device over the USB-C connection using the standard Arduino IDE upload workflow. The upload completes without errors, the device reboots automatically upon completion, and the newly flashed firmware runs as expected.
 
-\subsection*{Thermal Safety}
+\subsection{Thermal Safety}
 
-Device temperature is monitored during prolonged operation. Under continuous use over an extended session, the surface temperature of all components remains below \textbf{45\,°C}, confirming that no active cooling is required and that the thermal performance of both the electronics and the 3D-printed PLA enclosure is within safe operating limits.
+Device temperature is monitored during prolonged operation. Under continuous use over an extended session, the surface temperature of all components remains below 45\,°C, confirming that no active cooling is required and that the thermal performance of both the electronics and the 3D-printed PLA enclosure is within safe operating limits.

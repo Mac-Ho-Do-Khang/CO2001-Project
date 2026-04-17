@@ -39,16 +39,16 @@ CO2001-Project
 │   └── testing            
 │       ├── image
 │       └── main.tex
-├── hcmut.png                   # HCMUT logo for title page
+├── hcmut.png          # HCMUT logo
 ├── introduction
 │   ├── main.tex
 │   ├── objectives.tex
 │   ├── overview.tex
 │   └── structure.tex
-├── main.pdf                    # Compiled PDF report
-├── main.tex                    # Primary LaTeX entry point
+├── main.pdf           # Compiled PDF report
+├── main.tex           # Primary LaTeX entry point
 ├── README.md
-├── refs.bib                    # Bibliography file
+├── refs.bib           # Bibliography file
 ├── related-work
 │   ├── byte90.tex
 │   ├── image
