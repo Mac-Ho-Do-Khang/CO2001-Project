@@ -4,21 +4,118 @@ With the board's geometry fully characterised, the mechanical design phase produ
 
 \subsubsection{CAD Modelling}
 
-The enclosure is modelled in Autodesk Fusion 360. The internal cavity is dimensioned to match the board footprint with controlled tolerances, while external features, including 
+The enclosure is modelled in Autodesk Fusion 360. The internal cavity is dimensioned to match the board footprint, while external features, including 
 
 \begin{itemize}
     \item Side-wall apertures for the USB-C port and buttons
     \item Front-face opening for the display
 \end{itemize}
 
-are positioned to align with the results of the system analysis phase. Structural features such as snap-fit clips or interlocking tabs are added at this stage to facilitate tool-free assembly.
+are positioned to align with the results of the system analysis phase.
 
-Throughout the CAD modelling process, DFA principles are applied to minimise part count and simplify the assembly procedure. The housing is consequently designed as a two-part clamshell (a front cover and a back shell) that snaps together without fasteners, eliminating screws and reducing the total component count.
+The entire enclosure is consist of three components:
+
+\begin{itemize}
+    \item A rectangular backshell that houses the board and the battery. This is the main structural component that provides support and protection for the whole product.
+    \item A front cover that snaps onto the backshell, securing the board in place and providing an opening for the display.
+    \item A small button providing access to the reset board's reset pin.
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{development-testing/development/image/cad_frontcover_sketch.png}
+    \caption{CAD sketch of the front cover, from which the frontcover is extruded.}
+    \label{fig:cad_frontcover_sketch}
+\end{figure}
+
+Throughout the CAD modelling process, DFA principles are applied to minimise part count and simplify the assembly procedure. For instance, the front cover is designed to snap-fit onto the backshell, eliminating the need for additional fasteners.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{development-testing/development/image/cad_housing_backshell.png}
+        \caption{CAD model of the backshell}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{development-testing/development/image/cad_housing_frontcover.png}
+        \caption{CAD model of the front cover}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{development-testing/development/image/cad_housing_assembled.png}
+        \caption{CAD model of the assembled enclosure}
+    \end{subfigure}
+    \label{fig:cad_housing}
+\end{figure}
+
+DFM principles are also considered, with design features optimised for FDM printing. This includes incorporating fillets (i.e., rounded edges) to eliminate elephant's foot issues, which are the common over-extrusion and warping problems that occur at the base of FDM prints.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.55\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{development-testing/development/image/elephant_foot_fdm.png}
+        \caption{Illustration of elephant's foot issue \cite{elephant_foot_fdm1}}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{development-testing/development/image/elephant_foot_fdm_demo.png}
+        \caption{Real-world example of elephant's foot issue \cite{elephant_foot_fdm2}}
+    \end{subfigure}
+    \label{fig:fdm_elephant_foot}
+\end{figure}
 
 \subsubsection{Slicing and Print-Parameter Configuration}
 
-The finalised CAD model is exported and imported into Ultimaker Cura for slicing. Print parameters including layer height, infill density and pattern, wall line count, support structures, and print speed are configured to balance structural integrity, dimensional accuracy, and print time. The orientation of each part on the build plate is chosen to minimise the need for support material and to ensure that critical surfaces are printed at optimal quality.
+The finalised CAD model is exported and imported into Ultimaker Cura for slicing. Slicing is the process of converting the 3D model into a series of 2D layers, which are then translated into G-code instructions that the 3D printer can execute.
+
+Print parameters including temperature, layer height, infill density and print speed are configured to balance structural integrity, dimensional accuracy, and print time.
+
+Support is a feature where extra material is printed to hold up overhanging parts during the printing process. Each part is oriented in a way that minimises the need for support, as support material can increase print time and post-processing effort. For example, the backshell is printed with the open side facing upwards to avoid the need for support under the internal cavity. This is another application of DFM principles, as it optimises the design for the manufacturing process.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{development-testing/development/image/sliced_housing_backshell.png}
+        \caption{Sliced model of the backshell}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{development-testing/development/image/sliced_housing_frontcover.png}
+        \caption{Sliced model of the front cover}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{development-testing/development/image/sliced_housing_backshell_supported.png}
+        \caption{Sliced model of the backshell with support enabled (for comparison)}
+    \end{subfigure}
+    \label{fig:sliced_housing}
+\end{figure}
 
 \subsubsection{FDM Printing}
 
-The sliced G-code files are transferred to a Creality Ender 3 V2 printer. As mentioned above, PLA filament is selected for its ease of printing, good dimensional stability, and sufficient mechanical strength for a non-load-bearing enclosure application. After printing, the parts undergo basic post-processing, removal of support material and light surface finishing, before proceeding to the integration phases.
+The sliced G-code files are transferred to a Creality Ender 3 V2 printer. As mentioned above, PLA filament is selected for its ease of printing, good dimensional stability, and sufficient mechanical strength for a non-load-bearing enclosure application. After printing, the parts undergo basic post-processing before proceeding to the integration phases.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.55\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{development-testing/development/image/fdm_housing_components.jpg}
+        \caption{3D printed components}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{development-testing/development/image/fdm_housing_assembled.jpg}
+        \caption{3D printed enclosure assembled}
+    \end{subfigure}
+    \label{fig:fdm_housing}
+\end{figure}

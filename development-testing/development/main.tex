@@ -25,40 +25,36 @@ This section outlines the overall design pipeline adopted for developing the int
 
     % Phase 1 – System Analysis
     \node[box] (sa) {Phase 1: System Analysis};
-    \node[subbox, below=of sa] (sa1) {Board dimension inspection};
+    \node[subbox, below=0.2cm of sa] (sa1) {Board dimension inspection};
     \node[subbox, below=0.2cm of sa1] (sa2) {Architectural specification review};
 
     % Phase 2 – Mechanical Design
     \node[box, below=0.6cm of sa2] (md) {Phase 2: Mechanical Design};
-    \node[subbox, below=of md] (md1) {CAD modelling in Fusion 360};
-    \node[subbox, below=0.2cm of md1] (md2) {DFA optimisation};
-    \node[subbox, below=0.2cm of md2] (md3) {Slicing and print-parameter setup (Cura)};
-    \node[subbox, below=0.2cm of md3] (md4) {FDM printing (Ender 3 V2 / PLA)};
+    \node[subbox, below=0.2cm of md] (md1) {CAD modelling (Fusion 360)};
+    \node[subbox, below=0.2cm of md1] (md2) {Slicing and print-parameter setup (Cura)};
+    \node[subbox, below=0.2cm of md2] (md3) {FDM printing (Ender 3 V2, PLA)};
 
     % Phase 3 – Electrical Integration
-    \node[box, below=0.6cm of md4] (ei) {Phase 3: Electrical Integration};
-    \node[subbox, below=of ei] (ei1) {I/O interface and power analysis};
-    \node[subbox, below=0.2cm of ei1] (ei2) {Component wiring and connection design};
+    \node[box, below=0.6cm of md3] (ei) {Phase 3: Electrical Integration};
+    \node[subbox, below=0.2cm of ei] (ei1) {Component wiring};
 
     % Phase 4 – Programming
-    \node[box, below=0.6cm of ei2] (pg) {Phase 4: Programming};
-    \node[subbox, below=of pg] (pg1) {Firmware development (Arduino / ESP32)};
-    \node[subbox, below=0.2cm of pg1] (pg2) {Display logic and device operations};
+    \node[box, below=0.6cm of ei1] (pg) {Phase 4: Programming};
+    \node[subbox, below=0.2cm of pg] (pg1) {User interface design and implementation (Arduino IDE)};
+    \node[subbox, below=0.2cm of pg1] (pg2) {Application development and integration};
 
     % Arrows between phases
-    \draw[arrow] (sa)  -- (sa1);
-    \draw[arrow] (sa1) -- (sa2);
+    \draw (sa)  -- (sa1);
+    \draw (sa1) -- (sa2);
     \draw[arrow] (sa2) -- (md);
-    \draw[arrow] (md)  -- (md1);
-    \draw[arrow] (md1) -- (md2);
-    \draw[arrow] (md2) -- (md3);
-    \draw[arrow] (md3) -- (md4);
-    \draw[arrow] (md4) -- (ei);
-    \draw[arrow] (ei)  -- (ei1);
-    \draw[arrow] (ei1) -- (ei2);
-    \draw[arrow] (ei2) -- (pg);
-    \draw[arrow] (pg)  -- (pg1);
-    \draw[arrow] (pg1) -- (pg2);
+    \draw (md)  -- (md1);
+    \draw (md1) -- (md2);
+    \draw (md2) -- (md3);
+    \draw[arrow] (md3) -- (ei);
+    \draw (ei)  -- (ei1);
+    \draw[arrow] (ei1) -- (pg);
+    \draw (pg)  -- (pg1);
+    \draw (pg1) -- (pg2);
 
     \end{tikzpicture}
     \caption{Development pipeline for the integrated ESP32 TTGO T-Display device.}

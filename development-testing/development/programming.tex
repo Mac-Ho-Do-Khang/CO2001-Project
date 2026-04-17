@@ -1,3 +1,62 @@
 \subsection{Programming}
 
-The final phase of the pipeline covers the software layer that drives the device. Firmware is developed using the Arduino framework together with ESP32-specific libraries, which provide hardware abstraction for the display driver, GPIO management, and power control. The firmware implements the device's core operational logic and manages the content rendered on the 1.14-inch TFT display. The programming phase is carried out iteratively: functionality is built incrementally and validated against the hardware at each step, with issues identified during testing fed back into the firmware until stable behaviour is confirmed.
+The project is built on the \textbf{Arduino framework} targeting the ESP32 microcontroller, compiled and flashed via the Arduino IDE 2.x with the official ESP32 board package. The primary display library is \textbf{TFT\_eSPI}, which provides hardware-accelerated, low-level access to the ST7789 controller of the built-in 1.14-inch TFT screen.
+
+The firmware follows a simple \textbf{mode-switching} architecture centred on a single main loop. The concept of an \textit{active mode} is the central organising principle: a global state variable tracks which application or screen is currently displayed. Each iteration of the main loop routes control to the rendering and input-handling routine of that mode.
+
+On startup, the device attempts to synchronise system time with an NTP server over Wi-Fi (allowing up to ten seconds). If synchronisation succeeds, the real-time clock is set accordingly; otherwise it falls back to the compile-time timestamp as a seed. After initialisation, the system enters its main loop, which continuously polls the two physical buttons (\texttt{GPIO0} and \texttt{GPIO35}), updates the active application, and redraws the display.
+
+The home screen is divided into two regions. The upper area displays a live digital clock, showing hours, minutes, seconds, and the current date. Below it, a fixed navigation bar presents six application icons arranged in two rows of three. A single press on either button moves the selection highlight one slot in the corresponding direction (with wrap-around); a double press on either button launches the currently highlighted application.
+
+The firmware ships with six self-contained applications accessible from the home screen:
+
+\begin{itemize}
+  \item \textbf{Stopwatch}: a centisecond-precision stopwatch with lap recording;
+  \item \textbf{Calculator}: a four-function calculator with an on-screen 16-key grid;
+  \item \textbf{Animation}: a looping sprite-sheet animation rendered from a compile-time frame header, convertible from a GIF;
+  \item \textbf{Alien Attack}: a space-shooter arcade game in which the player dodges and shoots descending enemies;
+  \item \textbf{Tetris}: a classic falling-block puzzle game;
+  \item \textbf{Demo Image Viewer}: a viewer that cycles through full-screen RGB565 images stored in flash.
+\end{itemize}
+
+% \begin{figure}[H]
+%     \centering
+%     \begin{subfigure}[b]{0.1\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{development-testing/development/image/program_stopwatch_icon.png}
+%         \caption{Stopwatch}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.1\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{development-testing/development/image/program_calculator_icon.png}
+%         \caption{Calculator}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.1\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{development-testing/development/image/program_animation_icon.png}
+%         \caption{Animation}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.1\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{development-testing/development/image/program_alienattack_icon.png}
+%         \caption{Alien Attack}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.1\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{development-testing/development/image/program_tetris_icon.png}
+%         \caption{Tetris}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.1\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{development-testing/development/image/program_image_icon.png}
+%         \caption{Image Viewer}
+%     \end{subfigure}
+%     \label{fig:application_icons}
+% \end{figure}
+
+Each application is implemented as a self-contained module under its own subdirectory, exposing a rendering function and an input-handler function that the main loop calls during the corresponding mode. This modular layout keeps concerns separated and makes it straightforward to add or remove applications without modifying the core dispatch logic.

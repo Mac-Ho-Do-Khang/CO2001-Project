@@ -91,33 +91,33 @@
 % Define a macro for consistent page margins
 \def\reportlayout{
   \geometry{ a4paper, left=25mm, top=25mm, bottom=25mm, right=25mm }
-}
-
-% -----------------------------------------------------------------------
-% TABLE OF CONTENTS & REFERENCES LABELS
-% -----------------------------------------------------------------------
-
-\AtBeginDocument{\renewcommand*\contentsname{Contents}}  % Rename TOC heading to "Contents"
-\AtBeginDocument{\renewcommand*\refname{References}}     % Rename references heading to "References"
-
-% -----------------------------------------------------------------------
-
-\reportlayout                % Apply the page geometry defined above
-
-% -----------------------------------------------------------------------
-% SECTION NUMBERING DEPTH
-% -----------------------------------------------------------------------
-
-\setcounter{secnumdepth}{4}  % Number sections down to level 4 (subsubsubsection)
-\setcounter{tocdepth}{3}     % Show sections up to level 3 in the TOC
-
-% -----------------------------------------------------------------------
-% CHAPTER TITLE FORMAT
-% -----------------------------------------------------------------------
-
-% Customize chapter titles to be large, bold, and include "Chapter X" prefix
+  }
+  
+  % -----------------------------------------------------------------------
+  % TABLE OF CONTENTS & REFERENCES LABELS
+  % -----------------------------------------------------------------------
+  
+  \AtBeginDocument{\renewcommand*\contentsname{Contents}}  % Rename TOC heading to "Contents"
+  \AtBeginDocument{\renewcommand*\refname{References}}     % Rename references heading to "References"
+  
+  % -----------------------------------------------------------------------
+  
+  \reportlayout                % Apply the page geometry defined above
+  
+  % -----------------------------------------------------------------------
+  % SECTION NUMBERING DEPTH
+  % -----------------------------------------------------------------------
+  
+  \setcounter{secnumdepth}{4}  % Number sections down to level 4 (subsubsubsection)
+  \setcounter{tocdepth}{3}     % Show sections up to level 3 in the TOC
+  
+  % -----------------------------------------------------------------------
+  % CHAPTER TITLE FORMAT
+  % -----------------------------------------------------------------------
+  
+  % Customize chapter titles to be large, bold, and include "Chapter X" prefix
 \titleformat{\chapter}[display]
-  {\normalfont\huge\bfseries}{\chaptertitlename{} \thechapter}{1pt}{\Huge}
+{\normalfont\huge\bfseries}{\chaptertitlename{} \thechapter}{1pt}{\Huge}
 
 % Adjust spacing around chapter titles: -20pt before, 30pt after
 \titlespacing{\chapter}{0pt}{-20pt}{30pt}
@@ -134,21 +134,21 @@
 \newgeometry{left=30mm, top=20mm, bottom=30mm, right=30mm}
 
 \begin{titlepage}
-
+  
   % Decorative double border drawn with TikZ
   \begin{tikzpicture}[remember picture, overlay]
     % Outer thick border
     \draw[line width = 4pt]
-      ($(current page.north west) + (20mm,-20mm)$)
-      rectangle
-      ($(current page.south east) + (-20mm,20mm)$);
+    ($(current page.north west) + (20mm,-20mm)$)
+    rectangle
+    ($(current page.south east) + (-20mm,20mm)$);
     % Inner thin border (inset slightly from outer)
     \draw[line width=1.5pt]
-      ($ (current page.north west) + (20mm+2mm,-20mm-2mm) $)
-      rectangle
-      ($ (current page.south east) + (-20mm-2mm,20mm+2mm) $);
+    ($ (current page.north west) + (20mm+2mm,-20mm-2mm) $)
+    rectangle
+    ($ (current page.south east) + (-20mm-2mm,20mm+2mm) $);
   \end{tikzpicture}
-
+  
   % University and faculty names
   \begin{center}
     \large \textbf{\fontsize{12pt}{0pt}\selectfont VIETNAM NATIONAL UNIVERSITY, HO CHI MINH CITY} \\
@@ -158,17 +158,15 @@
     \large \textbf{\fontsize{12pt}{0pt}\selectfont FACULTY OF COMPUTER SCIENCE AND ENGINEERING}
     \vspace{-0.4cm}
   \end{center}
-
-  \vspace{0.5cm}
+  
+  \vspace{1cm}
   
   % University logo
   \begin{figure}[h!]
     \begin{center}
-      \includegraphics[width=8cm]{hcmut.png}
+      \includegraphics[width=4cm]{hcmut.png}
     \end{center}
   \end{figure}
-  
-  \vspace{-0.5cm}
   
   % Course name and code
   \begin{center}
@@ -192,10 +190,10 @@
     \begin{tabular}[H]{r l l}
       \textbf{INSTRUCTOR} & : KIEU LE THUY CHUNG, Ph.D.\\
       \textbf{STUDENTS}   & : DO VIET DUY TUONG - 2353302\\
-                          & : MAC HO DO KHANG - 2252297\\
-                          & : NGUYEN LE HAI QUAN - 2353002\\
-                          & : NINH VU THAI BAO - 2252073\\
-                          & : TRAN NGUYEN MINH KHOI - 2352625\\
+      & : MAC HO DO KHANG - 2252297\\
+      & : NGUYEN LE HAI QUAN - 2353002\\
+      & : NINH VU THAI BAO - 2252073\\
+      & : TRAN NGUYEN MINH KHOI - 2352625\\
     \end{tabular}
   \end{center}
   
@@ -220,9 +218,59 @@
 \newpage
 
 % -----------------------------------------------------------------------
-% FRONT MATTER (Roman numbering)
+% HEADER & FOOTER STYLE
 % -----------------------------------------------------------------------
 
+% --- For all pages except chapter-opening pages ---
+
+% \pagestyle{fancy}
+% \fancyhead{}
+% \fancyhead[L]{
+  %   \begin{tabular}{rl}
+  %     \begin{picture}(25,15)(0,0)
+  %       \put(0,-8){\includegraphics[width=10mm, height=10mm]{hcmut.png}}
+  %     \end{picture}&
+  %     \begin{tabular}{l}
+  %       \textbf{\bf \ttfamily University of Technology, Ho Chi Minh City}\\
+  %       \textbf{\bf \ttfamily Faculty of Computer Science and Engineering}
+  %     \end{tabular}
+  %   \end{tabular}
+  % }
+  % \fancyfoot{}
+  % \renewcommand{\footnoterule}{%
+  %   \vspace*{-1pt}
+  %   \noindent
+  %   \rule{1\textwidth}{0.4pt}\vspace*{2.6pt}%
+  % }
+  % \fancyfoot[L]{\scriptsize \ttfamily PROFESSIONAL SKILLS FOR ENGINEERS (CO2001) - Academic year 2025 - 2026}
+  % \fancyfoot[R]{\ttfamily Page {\thepage}/\pageref{LastPage}}
+  
+  % --- For chapter-opening pages ---
+  \fancypagestyle{plain}{
+    \fancyhead{}
+    \fancyhead[L]{
+      \begin{tabular}{rl}
+        \begin{picture}(25,15)(0,0)
+          \put(0,-8){\includegraphics[width=10mm, height=10mm]{hcmut.png}}
+        \end{picture}&
+        \begin{tabular}{l}
+          \textbf{\bf \ttfamily University of Technology, Ho Chi Minh City}\\
+          \textbf{\bf \ttfamily Faculty of Computer Science and Engineering}
+        \end{tabular}
+      \end{tabular}
+      }
+      \fancyfoot{}
+      \fancyfoot[L]{\scriptsize \ttfamily PROFESSIONAL SKILLS FOR ENGINEERS (CO2001) - Academic year 2025 - 2026}
+      \fancyfoot[R]{\ttfamily Page {\thepage}/\pageref{LastPage}}
+      }
+      
+      % \setlength{\headheight}{28.99997pt}       % Fix fancyhdr headheight warning
+      % \addtolength{\topmargin}{-16.99997pt}     % Compensate to preserve overall layout
+
+% -----------------------------------------------------------------------
+% FRONT MATTER (Roman numbering)
+% -----------------------------------------------------------------------
+      
 \pagenumbering{roman}   % Use Roman numerals (i, ii, iii, ...) for front matter
 \setcounter{page}{1}    % Start page count at i
 
@@ -233,8 +281,6 @@
 \tableofcontents
 \newpage
 \listoffigures
-\newpage
-\listoftables
 \newpage
 
 % -----------------------------------------------------------------------

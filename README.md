@@ -29,14 +29,14 @@ CO2001-Project
 ├── development-testing
 │   ├── development
 │   │   ├── analysis.tex
-│   │   ├── electrical.tex      # TODO
+│   │   ├── electrical.tex 
 │   │   ├── image
 │   │   │   └── ...
 │   │   ├── main.tex
-│   │   ├── mechanical.tex      # WIP
-│   │   └── programming.tex     # TODO
+│   │   ├── mechanical.tex 
+│   │   └── programming.tex
 │   ├── main.tex
-│   └── testing                 # TODO
+│   └── testing            
 │       ├── image
 │       └── main.tex
 ├── hcmut.png                   # HCMUT logo for title page
@@ -56,7 +56,7 @@ CO2001-Project
 │   └── main.tex
 └── theoretical-background
     ├── 3d-printing.tex
-    ├── design-for-assembly.tex
+    ├── dfma.tex
     ├── image
     │   └── ...
     └── main.tex

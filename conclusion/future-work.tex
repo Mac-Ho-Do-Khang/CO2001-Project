@@ -1,1 +1,13 @@
 \section{Future Work}
+
+Currently, although the prototype successfully demonstrates the core concept of an integrated ESP32-based handheld device with a custom 3D-printed enclosure, the firmware only supports a limited set of applications, and the device's interactive potential is not yet maximised.
+
+\subsection*{Hardware Extensions}
+
+As it is right now, only two input pins (\texttt{GPIO0} and \texttt{GPIO35} as shown in Figure \ref{fig:esp32ttgo_dimension}) with built-in buttons are utilised for user interaction. Future iterations could expand the number of input controls by connecting additional GPIO pins, allowing for more complex user interfaces and a wider variety of applications.
+
+\subsection*{Software Extensions}
+
+The firmware architecture can be extended to support a broader library of applications. Utility programs such as a stopwatch, unit converter, and simple data logger would increase the practical value of the device beyond entertainment.
+
+The ESP32 TTGO T-Display provides built-in Wi-Fi and Bluetooth capabilities that the current implementation does not exploit. Future work could leverage these to enable over-the-air (OTA) firmware updates, allowing new applications to be installed without a physical USB connection.
