@@ -21,11 +21,20 @@ The entire enclosure is consist of three components:
     \item A small button providing access to the reset board's reset pin.
 \end{itemize}
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{development-testing/development/image/cad_frontcover_sketch.png}
-    \caption{CAD sketch of the front cover, from which the frontcover is extruded.}
-    \label{fig:cad_frontcover_sketch}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{development-testing/development/image/cad_frontcover_sketch.png}
+        \caption{Sketch of the front cover}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{development-testing/development/image/cad_backshell_sketch.png}
+        \caption{Sketch of the backshell}
+    \end{subfigure}
+    \label{fig:cad_sketches}
 \end{figure}
 
 Throughout the CAD modelling process, DFA principles are applied to minimise part count and simplify the assembly procedure. For instance, the front cover is designed to snap-fit onto the backshell, eliminating the need for additional fasteners.
